@@ -1,0 +1,51 @@
+@top JSON {
+  Element
+}
+
+@skip {
+  " " | "\t" | "\n" | "\r"
+}
+
+@tokens {
+  string { '"' (!["\\] | "\\" _)* '"' }
+  integer { $[+-]? $[0-9]+ }
+  fraction { $[+-]? $[0-9]+ "." $[0-9]+ }
+  exponent { $[+-]? $[0-9]+ ("e" | "E") $[+-]? $[0-9]+ }
+  number { integer | fraction | exponent }
+  true { 'true' }
+  false { 'false' }
+  null { 'null' }
+  llaveizquierda { "{" }
+  llavederecha { "}" }
+  corcheteizquierdo { "[" }
+  corchetederecho { "]" }
+  dospuntos { ":" }
+  coma { "," }
+}
+
+Element {
+  Value
+}
+
+Value {
+ Object | Array | string | number | true | false | null}
+
+Object {
+  llaveizquierda Members* llavederecha
+}
+
+Member {
+  string dospuntos Element
+}
+
+Members {
+  Member (coma Member)*
+}
+
+Array {
+  corcheteizquierdo Elements* corchetederecho
+}
+
+Elements {
+  Element (coma Element)*
+}

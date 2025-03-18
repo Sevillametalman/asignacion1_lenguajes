@@ -1,0 +1,26 @@
+Siguiendo las instrucciones mencionadas en el pdf, adicionalmente se agregó lo siguiente a tokens por comodidad:
+
+llaveizquierda { "{" }
+llavederecha { "}" }
+corcheteizquierdo { "[" }
+corchetederecho { "]" }
+dospuntos { ":" }
+coma { "," }
+
+y en package.json la instrucción:
+
+"build": "lezer-generator src/json.grammar -o dist/index.js" en la sección de scripts
+
+Ejecución:
+
+0. Ejecutar en el terminal la instrucción "npm install"
+NOTA: Es probable que automáticamente genere los .js y .cjs de la prueba en la carpeta dist. De ser así, podría obviar el paso 1
+
+0.5 Asegurarse que el json a evaluar (example.json DEBE TENER ESE NOMBRE) y el archivo .grammar a utilizar (json.grammar DEBE TENER ESE NOMBRE) se encuentren en la carpeta src
+
+1. Ejecutar la instrucción en el terminal "npm run build" para generar los archivos necesarios en la carpeta dist.
+
+2. Ejecutar en el terminal node index.js
+
+3. Evaluar la salida
+

@@ -1,0 +1,21 @@
+{
+  "name": "json-with-comments",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "devDependencies": {
+    "@lezer/generator": "^1.7.2",
+    "rollup": "^3.0.0"
+  },
+  "dependencies": {
+    "@lezer/highlight": "^1.0.0",
+    "@lezer/lr": "^1.0.0"
+  },
+  "scripts": {
+    "prepare": "rollup -c",
+    "build": "lezer-generator src/json.grammar -o dist/index.js"
+  }
+}
